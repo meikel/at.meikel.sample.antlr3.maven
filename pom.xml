@@ -1,0 +1,98 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>at.meikel.sample.antlr3</groupId>
+	<artifactId>at.meikel.sample.antlr3.maven</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Antlr3 Sample</name>
+	<description>Antlr3 Sample</description>
+	<dependencies>
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr3-maven-plugin</artifactId>
+			<version>3.3</version>
+			<type>maven-plugin</type>
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>maven-gunit-plugin</artifactId>
+			<version>3.3</version>
+			<type>maven-plugin</type>
+			<scope>test</scope>
+		</dependency> -->
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<debug>true</debug>
+					<debuglevel>source,lines,vars</debuglevel>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- mvn antlr3:antlr -->
+				<groupId>org.antlr</groupId>
+				<artifactId>antlr3-maven-plugin</artifactId>
+				<version>3.1.3-1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>antlr</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<!-- mvn test -->
+				<groupId>org.antlr</groupId>
+				<artifactId>maven-gunit-plugin</artifactId>
+				<version>3.3</version>
+				<executions>
+					<execution>
+						<id>maven-gunit-plugin</id>
+						<phase>test</phase>
+						<goals>
+							<goal>gunit</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- uses all src/test/gunit/**/*.testsuite -->
+					<!-- single files can be configured, i.e. Test1.gunit -->
+					<!-- multiple files can be configured, i.e. *.gunit -->
+					<includes>
+						<!-- <include>*.gunit</include> -->
+						<include>Sample.gunit</include>
+					</includes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- mvn exec:java -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>sample.NumeralsMain</mainClass>
+					<arguments>
+						<argument>target/classes/NumeralsTest1.txt</argument>
+						<argument>target/classes/NumeralsTest2.txt</argument>
+					</arguments>
+					<!--
+						<systemProperties> <systemProperty> <key>myproperty</key>
+						<value>myvalue</value> </systemProperty> </systemProperties>
+					-->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,19 @@
+gunit Sample;
+@header{
+	package parser;
+}
+
+
+A:
+"a" OK
+"A" OK
+"b" FAIL
+
+B:
+"b" OK
+"B" OK
+"a" FAIL
+
+start:
+
+"a b" OK

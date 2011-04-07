@@ -1,0 +1,18 @@
+mvn compile --> generate Lexer/Parser from grammar
+mvn test --> gunit
+mvn exec:java --> NumeralsMain
+
+
+Links
+=====
+
+- http://antlr.org/antlr3-maven-plugin/index.html
+- http://blog.billshelton.me/2011/01/15/gUnit-Eclipse.html
+- http://www.antlr.org/wiki/display/ANTLR3/Test-Driven+Development+with+ANTLR
+- http://www.antlr.org/wiki/display/ANTLR3/gUnit+-+Maven+Integration
+
+
+Maven Plugin
+============
+
+Es gibt zwei verschiedene Antlr3 Plugins für Maven: das von mir persönlich favorisierte org.antlr:antlr3-maven-plugin sowie das org.codehaus.mojo:exec-maven-plugin Plugin

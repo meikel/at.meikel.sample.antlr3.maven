@@ -1,0 +1,18 @@
+gunit Numerals;
+@header{
+	package parser;
+}
+
+hundreds:
+"ein hundert" OK
+
+// "hundert" FAIL
+
+// "einhundert" OK
+
+ONE:
+"eins" OK
+
+TWO:
+"zwei" OK
+
